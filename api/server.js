@@ -16,7 +16,8 @@ server.use(express.json());
 function generateToken(user) {
   const payload = {
     username: user.username,
-    department: user.department
+    department: user.department,
+    roles: ["user"]
   };
 
   const secret = process.env.JWT_SECRET;
@@ -94,11 +95,29 @@ server.get("/api/users", protected, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
+//-- stretch task to return users only of same dept as token holder
 server.get("/api/userslikeme", protected, (req, res) => {
   db("users")
     .where({ department: req.decodedToken.department })
     .select("id", "username", "department")
     .then(users => res.status(200).json(users));
+});
+
+//----- example of checkRole functionality
+function checkRole(role) {
+  return function(req, res, next) {
+    if (req.decodedToken.roles.includes(role)) {
+      next();
+    } else {
+      res
+        .status(403)
+        .json({ message: `you need to be an ${role} to have access...` });
+    }
+  };
+}
+
+server.get("/api/adminaccess", protected, checkRole("admin"), (req, res) => {
+  db("users").then(users => res.status(200).json(users));
 });
 
 module.exports = server;
