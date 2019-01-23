@@ -94,4 +94,11 @@ server.get("/api/users", protected, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
+server.get("/api/userslikeme", protected, (req, res) => {
+  db("users")
+    .where({ department: req.decodedToken.department })
+    .select("id", "username", "department")
+    .then(users => res.status(200).json(users));
+});
+
 module.exports = server;
