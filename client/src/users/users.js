@@ -52,10 +52,23 @@ const UserDiv = styled.section`
   color: lightblue;
   width: 300px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
   h2 {
     text-decoration: underline;
+    text-align: center;
   }
+
+  ul {
+    /* list-style-type: none; */
+
+    li {
+      padding: 5px;
+      /* border: 1px solid lightblue; */
+    }
+  }
+
   button {
     margin-top: 20px;
     font-size: 16px;

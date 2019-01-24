@@ -30,6 +30,7 @@ class SignIn extends React.Component {
   render() {
     return (
       <StyledForm onSubmit={this.login}>
+        <h1>Sign In!</h1>
         <h3>Username:</h3>
         <input
           name="username"
@@ -57,9 +58,14 @@ const StyledForm = styled.form`
   width: 300px;
   display: flex;
   flex-direction: column;
+  color: lightblue;
+
+  h1 {
+    text-align: center;
+    text-decoration: underline;
+  }
 
   h3 {
-    color: lightblue;
     margin: 10px 0 0;
     font-size: 20px;
   }

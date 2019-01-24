@@ -25,6 +25,8 @@ class App extends Component {
           this.props.history.push("/users");
         })
         .catch(err => console.log(err));
+    } else {
+      this.props.history.push("/signin");
     }
   }
 

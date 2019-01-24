@@ -31,6 +31,7 @@ class SignUp extends React.Component {
   render() {
     return (
       <StyledForm onSubmit={this.register}>
+        <h1>Sign Up!</h1>
         <h3>Username:</h3>
         <input
           name="username"
@@ -66,9 +67,13 @@ const StyledForm = styled.form`
   width: 300px;
   display: flex;
   flex-direction: column;
+  color: lightblue;
 
+  h1 {
+    text-align: center;
+    text-decoration: underline;
+  }
   h3 {
-    color: lightblue;
     margin: 10px 0 0;
     font-size: 20px;
   }
