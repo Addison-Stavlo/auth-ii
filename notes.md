@@ -3,6 +3,7 @@
 npm init -y
 yarn add nodemon --dev
 yarn add express knex sqlite3 bcryptjs jsonwebtoken
+yarn add dotenv
 
 package.json => add to scripts "server": "nodemon index.js"
 
@@ -14,6 +15,9 @@ edit desired DB name and folder structure
 can add migrations: { directory: './data/migrations' }
 
 knex migrate:make users
+migrationfile => set up table
+
+knex migrate:latest
 
 ---
 

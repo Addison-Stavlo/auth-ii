@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const cors = require("cors");
 const express = require("express");
 const knex = require("knex");
 const knexConfig = require("../knexfile.js");
@@ -10,6 +11,7 @@ const server = express();
 
 const db = knex(knexConfig.development);
 
+server.use(cors());
 server.use(express.json());
 
 //--- define functions
@@ -66,7 +68,14 @@ server.post("/api/register", (req, res) => {
   db("users")
     .insert(userInfo)
     .then(ids => {
-      res.status(201).json(ids);
+      db("users")
+        .where({ username: userInfo.username })
+        .select("id", "username", "department")
+        .first()
+        .then(user => {
+          let token = generateToken(user);
+          res.status(201).json({ user, token });
+        });
     })
     .catch(err => res.status(500).json({ error: err }));
 });
