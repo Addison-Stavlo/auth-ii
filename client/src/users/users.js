@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 class Users extends React.Component {
   state = {
@@ -32,7 +33,7 @@ class Users extends React.Component {
 
   render() {
     return (
-      <>
+      <UserDiv>
         <h2>List of Users</h2>
         <ul>
           {this.state.users.map(user => (
@@ -42,9 +43,33 @@ class Users extends React.Component {
         {this.props.isLoggedIn ? (
           <button onClick={this.logOut}>Log Out</button>
         ) : null}
-      </>
+      </UserDiv>
     );
   }
 }
+
+const UserDiv = styled.section`
+  color: lightblue;
+  width: 300px;
+  margin: 0 auto;
+
+  h2 {
+    text-decoration: underline;
+  }
+  button {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 5px 3px lightblue;
+    }
+    &:active {
+      background: black;
+      color: lightblue;
+    }
+  }
+`;
 
 export default Users;

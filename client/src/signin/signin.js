@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 class SignIn extends React.Component {
   state = {
@@ -28,7 +29,8 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.login}>
+      <StyledForm onSubmit={this.login}>
+        <h3>Username:</h3>
         <input
           name="username"
           type="text"
@@ -36,6 +38,7 @@ class SignIn extends React.Component {
           onChange={this.handleChange}
           placeholder="username"
         />
+        <h3>Password:</h3>
         <input
           name="password"
           type="password"
@@ -44,9 +47,41 @@ class SignIn extends React.Component {
           placeholder="password"
         />
         <button type="submit">Sign In</button>
-      </form>
+      </StyledForm>
     );
   }
 }
+
+const StyledForm = styled.form`
+  margin: 0 auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    color: lightblue;
+    margin: 10px 0 0;
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  button {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 5px 3px lightblue;
+    }
+    &:active {
+      background: black;
+      color: lightblue;
+    }
+  }
+`;
 
 export default SignIn;

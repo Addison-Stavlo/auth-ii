@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, NavLink, withRouter } from "react-router-dom";
-// import { withRouter } from "react-router";
+import styled from "styled-components";
+
 import axios from "axios";
 import "./App.css";
 import SignUp from "./signup/signup";
@@ -34,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <header>
+        <StyledHeader>
           <nav>
             <NavLink to="/signup">Sign Up</NavLink>
             &nbsp;&nbsp;
@@ -42,7 +43,7 @@ class App extends Component {
             &nbsp;&nbsp;
             <NavLink to="/users">Users</NavLink>
           </nav>
-        </header>
+        </StyledHeader>
 
         <main>
           <Route
@@ -74,5 +75,29 @@ class App extends Component {
     );
   }
 }
+
+const StyledHeader = styled.header`
+  border-bottom: 1px solid lightblue;
+
+  nav {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  a,
+  a:visited {
+    color: lightblue;
+    padding: 5px;
+    text-decoration: none;
+  }
+
+  a.active {
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
+  }
+`;
 
 export default withRouter(App);
