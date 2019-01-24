@@ -8,6 +8,10 @@ import SignUp from "./signup/signup";
 import SignIn from "./signin/signin";
 import Users from "./users/users";
 
+import { LogIn } from "styled-icons/feather/LogIn";
+import { FileSignature } from "styled-icons/fa-solid/FileSignature";
+import { Users as UsersIcon } from "styled-icons/fa-solid/Users";
+
 class App extends Component {
   state = {
     signedIn: false
@@ -39,11 +43,20 @@ class App extends Component {
       <>
         <StyledHeader>
           <nav>
-            <NavLink to="/signup">Sign Up</NavLink>
+            <NavLink to="/signup">
+              <SignUpIcon />
+              <p>Sign Up</p>
+            </NavLink>
             &nbsp;&nbsp;
-            <NavLink to="/signin">Sign In</NavLink>
+            <NavLink to="/signin">
+              <LogInIcon />
+              <p>Sign In</p>
+            </NavLink>
             &nbsp;&nbsp;
-            <NavLink to="/users">Users</NavLink>
+            <NavLink to="/users">
+              <StyledUsersIcon />
+              <p>Users</p>
+            </NavLink>
           </nav>
         </StyledHeader>
 
@@ -100,6 +113,22 @@ const StyledHeader = styled.header`
     font-weight: bold;
     border: 1px solid white;
   }
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+`;
+
+const LogInIcon = styled(LogIn)`
+  color: lightblue;
+`;
+const SignUpIcon = styled(FileSignature)`
+  color: lightblue;
+`;
+const StyledUsersIcon = styled(UsersIcon)`
+  color: lightblue;
+  height: 50px;
 `;
 
 export default withRouter(App);

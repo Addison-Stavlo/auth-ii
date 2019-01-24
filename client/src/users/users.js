@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { LogOut } from "styled-icons/feather/LogOut";
 
 class Users extends React.Component {
   state = {
@@ -41,7 +42,10 @@ class Users extends React.Component {
           ))}
         </ul>
         {this.props.isLoggedIn ? (
-          <button onClick={this.logOut}>Log Out</button>
+          <button onClick={this.logOut}>
+            <LogOutIcon />
+            Log Out
+          </button>
         ) : null}
       </UserDiv>
     );
@@ -81,8 +85,18 @@ const UserDiv = styled.section`
     &:active {
       background: black;
       color: lightblue;
+
+      svg {
+        color: lightblue;
+      }
     }
   }
+`;
+
+const LogOutIcon = styled(LogOut)`
+  color: black;
+  height: 30px;
+  padding-right: 20px;
 `;
 
 export default Users;

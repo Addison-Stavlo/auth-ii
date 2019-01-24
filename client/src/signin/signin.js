@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 
+import { LogIn } from "styled-icons/feather/LogIn";
+
 class SignIn extends React.Component {
   state = {
     username: "",
@@ -47,7 +49,10 @@ class SignIn extends React.Component {
           onChange={this.handleChange}
           placeholder="password"
         />
-        <button type="submit">Sign In</button>
+        <button type="submit">
+          <LogInIcon />
+          Sign In
+        </button>
       </StyledForm>
     );
   }
@@ -79,6 +84,9 @@ const StyledForm = styled.form`
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       box-shadow: 0 0 5px 3px lightblue;
@@ -86,8 +94,18 @@ const StyledForm = styled.form`
     &:active {
       background: black;
       color: lightblue;
+
+      svg {
+        color: lightblue;
+      }
     }
   }
+`;
+
+const LogInIcon = styled(LogIn)`
+  color: black;
+  height: 30px;
+  padding-right: 20px;
 `;
 
 export default SignIn;

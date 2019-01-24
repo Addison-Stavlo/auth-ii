@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 
+import { FileSignature } from "styled-icons/fa-solid/FileSignature";
+
 class SignUp extends React.Component {
   state = {
     username: "",
@@ -56,7 +58,10 @@ class SignUp extends React.Component {
           onChange={this.handleChange}
           placeholder="password"
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit">
+          <SignUpIcon />
+          Sign Up
+        </button>
       </StyledForm>
     );
   }
@@ -87,6 +92,10 @@ const StyledForm = styled.form`
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    /* display: flex; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       box-shadow: 0 0 5px 3px lightblue;
@@ -94,8 +103,18 @@ const StyledForm = styled.form`
     &:active {
       background: black;
       color: lightblue;
+
+      svg {
+        color: lightblue;
+      }
     }
   }
+`;
+
+const SignUpIcon = styled(FileSignature)`
+  color: black;
+  height: 30px;
+  padding-right: 20px;
 `;
 
 export default SignUp;
